@@ -1,0 +1,42 @@
+<!-- Login + Registration page -->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Login/ Registration</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h1>Welcome to Wish List</h1>
+        {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <section id="loginreg">
+        <fieldset class="login_reg">
+            <h3>REGISTER</h3>
+            <form action="/users" method="POST">
+            {% csrf_token %}
+                <p><span>Name:</span><input type="text" name="name"></p>
+                <p><span>Username:</span><input type="text" name="username"></p>
+                <p><span>Password:</span><input type="password" name="password"></p>
+                <p><span>Confirm PW:</span><input type="password" name="password_conf"></p>
+                <p><span>Date Hired:</span><input type="date" name="date"></p>
+                <input type="submit" value="Register">
+            </form>
+        </fieldset>
+        <fieldset class="login_reg">
+            <h3>LOGIN</h3>
+            <form action='/users/login', method="POST">
+                {% csrf_token %}
+                <p><span>Username:</span><input type="text" name="username" required></p>
+                <p><span>Password:</span><input type="password" name="password" required></p>
+                <input type="submit" value="Login">
+            </form>
+        </fieldset>
+    </section>
+</body>
+</html>

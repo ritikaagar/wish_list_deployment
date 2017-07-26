@@ -1,0 +1,32 @@
+<!-- /add -->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Create Item</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <nav>
+        <a href="/dashboard">Home</a>  |
+        <a href="/signout">Logout</a>
+    </nav> 
+        {% if messages %}
+        <ul class='messages'>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <section>
+        <fieldset class="add_item">
+            <h3>Create a New Wish List Item</h3>
+            <form action="/post_item" method="POST">
+            {% csrf_token %}
+                <p><span>Item/Product:</span><input type="text" name="item" required/></p>
+                <input type="submit" value="Add">
+            </form>
+        </fieldset>
+    </section>
+</body>
+</html>

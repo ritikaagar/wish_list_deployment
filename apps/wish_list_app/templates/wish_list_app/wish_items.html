@@ -1,0 +1,30 @@
+<!-- /wish_items -->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Wish List Items</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head>
+<body>
+    <nav>
+        <a href="/travels">Home</a>  |
+        <a href="/signout">Logout</a>
+    </nav> 
+    <h1>{{ item_info.item }}</h1>
+    <section id="loginreg">
+        <div>
+            <fieldset class="others">
+                <h3>Other users who added this item <h3>
+                {% for user in joiners %}
+                    <p>{{ user.username }}</p>
+                    <!-- Trip.objects.filter(id = id).exclude( 
+                        Trip.objects.filter(poster__id = trip_info.poster.id)
+                    -->
+                {% endfor %}
+            </fieldset>
+        </div>
+    </section>
+</body>
+</html>
